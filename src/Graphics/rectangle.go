@@ -1,10 +1,29 @@
 package Graphics
 
-func Perimeter(width, hight float64) float64 {
-	result := (width + hight) * 2
-	return result
+import "math"
+
+type Shape interface {
+	Area() float64
 }
 
-func Area(width, hight float64) float64 {
-	return width * hight
+type Rectangle struct {
+	Width float64
+	Hight float64
+}
+
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Hight
+}
+
+type Circle struct {
+	Radius float64
+}
+
+func (r Circle) Area() float64 {
+	return r.Radius * r.Radius * math.Pi
+}
+
+func Perimeter(r Rectangle) float64 {
+	result := (r.Width + r.Hight) * 2
+	return result
 }
